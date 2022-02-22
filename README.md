@@ -840,6 +840,98 @@ cout<<endl;
 }
 
 	
+#include<iostream><br>
+using namespace std;<br>
+struct Node <br>
+{<br>
+	int value;<br>
+	struct Node *next;<br>
+};<br>
+struct Node* head=NULL;<br>
+struct Node* sHead=NULL;<br>
+struct Node* temp=NULL;<br>
+void insert(int new_data)<br>
+{<br>
+	struct Node* new_node = new Node();<br>
+	new_node->value = new_data;<br>
+	new_node->next = head;<br>
+	head = new_node;<br>
+}
+int n;<br>
+int ele;<br>
+int splitlndex;<br>
+int main()<br>
+{<br>
+	int i;
+	cout<<"Enter number of elements you want in the list\t";<br>
+	cin>>n;<br>
+	cout<<"Enter elements:"<<endl;<br>
+	for(i=0;i<n;i++)<br>
+	{<br>
+		cin>>ele;<br>
+		insert(ele);<br>
+	}<br>
+	cout<<"\nList of elements:"<<endl;<br>
+	Node *t;<br>
+	t=head;<br>
+	while(t!=NULL)<br>
+	{<br>
+		cout<<t->value<<"\t";<br>
+		t=t->next;<br>
+	}<br>
+	cout<<"\n\nEnter the element you want the list to split";<br>
+	cin>>splitlndex;<br>
+	while(splitlndex<0||splitlndex>n-1)<br>
+	{<br>
+		cout<<"Invalid position.Try again."<<endl;<br>
+		cin>>splitlndex;<br>
+	}<br>
+	temp = head;<br>
+	for(i=0;i<splitlndex;i++)<br>
+	{<br>
+		if(i==splitlndex-1)<br>
+		{<br>
+			Node *tN;<br>
+			tN=temp->next;<br>
+			sHead=tN;<br>
+			temp->next=NULL;<br>
+			break;<br>
+		}<br>
+		temp=temp->next;<br>
+	}<br>
+	temp=head;<br>
+	if(temp==NULL)<br>
+	{<br>
+		cout<<"\n First list is empty"<<endl;<br>
+	}<br>
+	else<br>
+	{<br>
+		cout<<"\n\nFirst list element"<<endl;<br>
+		while(temp!=NULL)<br>
+		{<br>
+			cout<<temp->value<<"\t";<br>
+			temp=temp->next;<br>
+		}<br>
+	}<br>
+	temp=sHead;<br>
+	if(temp==NULL)<br>
+	{<br>
+		cout<<"\nSecond list is empty"<<endl;<br>
+	}<br>
+	else<br>
+	{<br>
+		cout<<"\n\nSecond list elements"<<endl;<br>
+		while(temp!=NULL)<br>
+		{<br>
+			cout<<temp->value<<"\t";<br>
+			temp=temp->next;<br>
+		}<br>
+	}<br>
+	return 0;<br>
+}<br>
+	
+**Output**<br>
+![image](https://user-images.githubusercontent.com/98141713/155066730-8bbf39f8-6fbe-4cfc-9d69-50b691ca0196.png)<br>
 
 	
 	
