@@ -1015,3 +1015,43 @@ return 0;<br>
 ![image](https://user-images.githubusercontent.com/98141713/155929822-59c90b11-fd0d-46e7-b24e-ec25dbb7568e.png)<br>
 	
 
+**Doubly linked list**
+	#include <iostream>
+using namespace std;
+struct Node {
+   int data;
+   struct Node *prev;
+   struct Node *next;
+};
+struct Node* head = NULL;
+void insert(int newdata) {
+   struct Node* newnode = (struct Node*) malloc(sizeof(struct Node));
+   newnode->data = newdata;
+   newnode->prev = NULL;
+   newnode->next = head;
+   if(head != NULL)
+   head->prev = newnode ;
+   head = newnode;
+}
+void display() {
+   struct Node* ptr;
+   ptr = head;
+   while(ptr != NULL) {
+      cout<< ptr->data <<" ";
+      ptr = ptr->next;
+   }
+}
+int main() {
+   insert(3);
+   insert(1);
+   insert(7);
+   insert(2);
+   insert(9);
+   cout<<"The doubly linked list is: ";
+   display();
+   return 0;
+}
+	
+**Output**
+![image](https://user-images.githubusercontent.com/98141713/155933730-3b9e1f96-d429-472e-b967-87f48fc37935.png)
+	
