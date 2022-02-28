@@ -932,6 +932,86 @@ int main()<br>
 	
 **Output**<br>
 ![image](https://user-images.githubusercontent.com/98141713/155066730-8bbf39f8-6fbe-4cfc-9d69-50b691ca0196.png)<br>
+	
+	
+**Create a WAP to store K keys into an array or size To the location competing a hash function. For key %n where key%n where m>n to handle  collision use linear** 	
+#include<iostream><br>
+#include<limits.h><br>
+using namespace std;<br>
+void Insert(int ary[],int hFn, int Size)<br>
+{<br>
+int element,pos,n=0;<br>
+cout<<"Enter key element to insert\n";<br>
+cin>>element;<br>
 
+pos = element%hFn; <br>
+
+while(ary[pos]!= INT_MIN)<br>
+	{  <br>
+if(ary[pos]== INT_MAX)<br>
+            break;<br>
+pos = (pos+1)%hFn;<br>
+n++;<br>
+
+if(n==Size)<br>
+            break;<br>     
+}<br>
+
+if(n==Size)<br>
+        cout<<"Hash table was full of elements\nNo Place to insert this element\n\n";<br>
+else<br>
+        ary[pos] = element;  <br><br>  
+}<br>
+
+void display(int ary[],int Size)<br>
+	{<br>
+int i;<br>
+ 
+cout<<"Index\tValue\n";<br>
+for(i=0;i<Size;i++)<br>
+        cout<<i<<"\t"<<ary[i]<<"\n";<br>
+}<br>
+
+
+int main()<br>
+{<br>
+int Size,hFn,i,choice;<br>
+cout<<"Enter size of hash table\n";<br>
+cin>>Size;<br>
+ hFn=Size;<br>
+int ary[Size];<br>
+for(i=0;i<Size;i++)<br>
+        ary[i]=INT_MIN; <br>
+        
+do<br>
+{<br>
 	
+cout<<"Enter your choice\n";<br>
+cout<<" 1-> Insert\n 2-> Display\n 0-> Exit\n";<br>
+cin>>choice;<br>
+<br>
+switch(choice)<br>
+{<br>
+case 1:<br>
+Insert(ary,hFn,Size);<br>
+break;<br>
+
+case 2:<br>
+display(ary,Size);<br>
+break;<br>
+
+default:<br>
+cout<<"Enter correct choice\n";<br>
+break;<br>
+}<br>
+
+}<br>
+while(choice);<br>
+return 0;<br>
+}<br>
+
+**Output**<br>
+![image](https://user-images.githubusercontent.com/98141713/155929805-358015f9-fad7-445a-953f-6b6ba143fba8.png)<br>
+![image](https://user-images.githubusercontent.com/98141713/155929822-59c90b11-fd0d-46e7-b24e-ec25dbb7568e.png)<br>
 	
+
