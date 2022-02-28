@@ -1015,43 +1015,45 @@ return 0;<br>
 ![image](https://user-images.githubusercontent.com/98141713/155929822-59c90b11-fd0d-46e7-b24e-ec25dbb7568e.png)<br>
 	
 
-**Doubly linked list**
-	#include <iostream>
-using namespace std;
-struct Node {
-   int data;
-   struct Node *prev;
-   struct Node *next;
-};
-struct Node* head = NULL;
-void insert(int newdata) {
-   struct Node* newnode = (struct Node*) malloc(sizeof(struct Node));
-   newnode->data = newdata;
-   newnode->prev = NULL;
-   newnode->next = head;
-   if(head != NULL)
-   head->prev = newnode ;
-   head = newnode;
-}
-void display() {
-   struct Node* ptr;
-   ptr = head;
-   while(ptr != NULL) {
-      cout<< ptr->data <<" ";
-      ptr = ptr->next;
-   }
-}
-int main() {
-   insert(3);
-   insert(1);
-   insert(7);
-   insert(2);
-   insert(9);
-   cout<<"The doubly linked list is: ";
-   display();
-   return 0;
-}
+**Doubly linked list**<br>
+	#include <iostream><br>
+using namespace std;<br>
+struct Node<br>
+	{<br>
+   int data;<br>
+   struct Node *prev;<br>
+   struct Node *next;<br>
+};<br>
+struct Node* head = NULL;<br>
+void insert(int newdata) <br>{<br>
+   struct Node* newnode = (struct Node*) malloc(sizeof(struct Node));<br>
+   newnode->data = newdata;<br>
+   newnode->prev = NULL;<br>
+   newnode->next = head;<br><br>
+   if(head != NULL)<br>
+   head->prev = newnode ;<br>
+   head = newnode;<br>
+}<br>
+void display()<br> {<br>
+   struct Node* ptr;<br>
+   ptr = head;<br>
+   while(ptr != NULL)<br> {<br>
+      cout<< ptr->data <<" ";<br>
+      ptr = ptr->next;<br>
+   }<br>
+}<br>
+int main()<br>
+	{<br>
+   insert(3);<br>
+   insert(1);<br>
+   insert(7);<br>
+   insert(2);<br>
+   insert(9);<br>
+   cout<<"The doubly linked list is: ";<br>
+   display();<br>
+   return 0;<br>
+}<br>
 	
-**Output**
-![image](https://user-images.githubusercontent.com/98141713/155933730-3b9e1f96-d429-472e-b967-87f48fc37935.png)
+**Output**<br>
+![image](https://user-images.githubusercontent.com/98141713/155933730-3b9e1f96-d429-472e-b967-87f48fc37935.png)<br>
 	
