@@ -1284,50 +1284,51 @@ cout<<"Enter key element to insert\n";<br>
 cin>>element;<br>
 pos = element%hFn; <br>
 while(ary[pos]!= INT_MIN)<br> { <br>
-if(ary[pos]== INT_MAX)
- break; 
-pos = (pos+1)%hFn; 
-n++;
-if(n==Size)
- break; 
-} 
-if(n==Size)
- cout<<"Hash table was full of elements\nNo Place to insert this element\n\n"; 
-else
- ary[pos] = element; 
-} 
-void display(int ary[],int Size){ 
-int i;
+if(ary[pos]== INT_MAX)<br>
+ break; <br>
+pos = (pos+1)%hFn; <br>
+n++;<br>
+if(n==Size)<br>
+ break; <br>
+} <br>
+if(n==Size)<br>
+ cout<<"Hash table was full of elements\nNo Place to insert this element\n\n"; <br>
+else<br>
+ ary[pos] = element; <br>
+} <br>
+void display(int ary[],int Size)<br>{ <br>
+int i;<br>
  
-cout<<"Index\tValue\n";
-for(i=0;i<Size;i++)
- cout<<i<<"\t"<<ary[i]<<"\n"; 
-} 
-int main(){
-int Size,hFn,i,choice; 
-cout<<"Enter size of hash table\n";
-cin>>Size;
-hFn=Size;
-int ary[Size];
-for(i=0;i<Size;i++)
- ary[i]=INT_MIN; 
-do{ 
-cout<<"Enter your choice\n"; 
-cout<<" 1-> Insert\n 2-> Display\n 0-> Exit\n";
-cin>>choice;
-switch(choice){
-case 1:
-Insert(ary,hFn,Size);
-break; 
-case 2:
-display(ary,Size);
-break; 
-default:
-cout<<"Enter correct choice\n";
-break; 
-} 
-}while(choice);
-return 0;
-}
-	**Output**
+cout<<"Index\tValue\n";<br>
+for(i=0;i<Size;i++)<br>
+ cout<<i<<"\t"<<ary[i]<<"\n"; <br>
+} <br>
+int main()<br>{<br>
+int Size,hFn,i,choice; <br>
+cout<<"Enter size of hash table\n";<br>
+cin>>Size;<br>
+hFn=Size;<br>
+int ary[Size];<br>
+for(i=0;i<Size;i++)<br>
+ ary[i]=INT_MIN; <br>
+do<br>{ <br>
+cout<<"Enter your choice\n";<br> 
+cout<<" 1-> Insert\n 2-> Display\n 0-> Exit\n";<br>
+cin>>choice;<br>
+switch(choice)<br>{<br>
+case 1:<br>
+Insert(ary,hFn,Size);<br>
+break; <br>
+case 2:<br>
+display(ary,Size);<br><br>
+break; <br>
+default:<br>
+cout<<"Enter correct choice\n";<br>
+break; <br>
+} <br>
+}<br>while(choice);<br>
+return 0;<br>
+}<br>
+	**Output**<br>
+![image](https://user-images.githubusercontent.com/98141713/163770173-dfefb79f-dbd3-4473-9a3a-3e73dfd86ff4.png)<br>
 	
