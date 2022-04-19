@@ -1336,34 +1336,27 @@ return 0;<br>
 #include<iostream><br>
 using namespace std;<br>
 int grid[100][100];<br>
-
 void print(int n) <br>{<br>
     for (int i = 0;i <= n-1; i++) <br>{<br>
         for (int j = 0;j <= n-1; j++)<br> {<br>
-            
-                cout <<grid[i][j]<< " ";<br>
-            
-        }<br>
+            cout <<grid[i][j]<< " ";<br>
+           }<br>
         cout<<endl;<br>
     }<br>
     cout<<endl;<br>
     cout<<endl;<br>
 }<br>
-
-bool isSafe(int col, int row, int n)<br> {<br>
- 
-    for (int i = 0; i < row; i++)<br> {<br>0
+	bool isSafe(int col, int row, int n)<br> {<br>
+   for (int i = 0; i < row; i++)<br> {<br>0
         if (grid[i][col])<br> {
             return false;<br>
         }<br>
     }<br>
-    
-    for (int i = row,j = col;i >= 0 && j >= 0; i--,j--)<br> {<br>
+      for (int i = row,j = col;i >= 0 && j >= 0; i--,j--)<br> {<br>
         if (grid[i][j])<br> {<br>
             return false;<br>
         }<br>
     }<br>
- 
     for (int i = row, j = col; i >= 0 && j < n; j++, i--) <br>{<br>
         if (grid[i][j])<br> {<br>
             return false;<br>
@@ -1371,7 +1364,6 @@ bool isSafe(int col, int row, int n)<br> {<br>
     }<br>
     return true;<br>
 }<br>
-
 bool solve (int n, int row)<br> {<br>
     if (n == row)<br>{<br>
         print(n);<br>
