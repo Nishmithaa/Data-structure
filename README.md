@@ -1333,73 +1333,82 @@ return 0;<br>
 ![image](https://user-images.githubusercontent.com/98141713/163770173-dfefb79f-dbd3-4473-9a3a-3e73dfd86ff4.png)<br>
 	
 	**N queens**
-	#include <bits/stdc++.h>
-#define N 4
-using namespace std;
+#include<iostream><br>
+using namespace std;<br>
+int grid[100][100];<br>
 
-void printSolution(int board[N][N])
-{
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++)
-			cout << " " << board[i][j] << " ";
-	}
-}
-bool isSafe(int board[N][N], int row, int col)
-{
-	int i, j;
-	for (i = 0; i < col; i++)
-		if (board[row][i])
-			return false;
-	for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
-		if (board[i][j])
-			return false;
-	for (i = row, j = col; j >= 0 && i < N; i++, j--)
-		if (board[i][j])
-			return false;
+void print(int n) <br>{<br>
+    for (int i = 0;i <= n-1; i++) <br>{<br>
+        for (int j = 0;j <= n-1; j++)<br> {<br>
+            
+                cout <<grid[i][j]<< " ";<br>
+            
+        }<br>
+        cout<<endl;<br>
+    }<br>
+    cout<<endl;<br>
+    cout<<endl;<br>
+}<br>
 
-	return true;
-}
+bool isSafe(int col, int row, int n)<br> {<br>
+ 
+    for (int i = 0; i < row; i++)<br> {<br>0
+        if (grid[i][col])<br> {
+            return false;<br>
+        }<br>
+    }<br>
+    
+    for (int i = row,j = col;i >= 0 && j >= 0; i--,j--)<br> {<br>
+        if (grid[i][j])<br> {<br>
+            return false;<br>
+        }<br>
+    }<br>
+ 
+    for (int i = row, j = col; i >= 0 && j < n; j++, i--) <br>{<br>
+        if (grid[i][j])<br> {<br>
+            return false;<br>
+        }<br>
+    }<br>
+    return true;<br>
+}<br>
 
-bool solveNQUtil(int board[N][N], int col)
-{
-	if (col >= N)
-		return true;
-
-	for (int i = 0; i < N; i++) {
-
-		if (isSafe(board, i, col)) {
-			board[i][col] = 1;
-			if (solveNQUtil(board, col + 1))
-				return true;
-
-			board[i][col] = 0;
-		}
-	}
-
-	return false;
-}
-
-bool solveNQ()
-{
-	int board[N][N] = { { 0, 0, 0, 0 },
-						{ 0, 0, 0, 0 },
-						{ 0, 0, 0, 0 },
-						{ 0, 0, 0, 0 } };
-
-	if (solveNQUtil(board, 0) == false) {
-		cout << "Solution does not exist";
-		return false;
-	}
-
-	printSolution(board);
-	return true;
-}
-
-int main()
-{
-	solveNQ();
-	return 0;
-}
-			**Output**
-			![image](https://user-images.githubusercontent.com/98141713/163773240-e8b31945-dc7c-4cc2-baa0-e729eecc49bc.png)
-
+bool solve (int n, int row)<br> {<br>
+    if (n == row)<br>{<br>
+        print(n);<br>
+        return true;<br>
+    }<br>
+  
+    bool res = false;<br>
+    for (int i = 0;i <=n-1;i++)<br> {<br>
+        if (isSafe(i, row, n)) <br>{<br>
+            grid[row][i] = 1;<br>
+           
+            res = solve(n, row+1) || res;<br>
+          
+            grid[row][i] = 0;<br>
+        }<br>
+    }<br>
+    return res;<br>
+}<br>
+int main()<br>
+{<br>
+  ios_base::sync_with_stdio(false);<br>
+    cin.tie(NULL);<br>
+        int n;<br>
+        cout<<"Enter the number of queen"<<endl;<br>
+        cin >> n;<br>
+        for (int i = 0;i < n;i++) <br>{<br>
+            for (int j = 0;j < n;j++)<br> {<br>
+                grid[i][j] = 0;<br>
+            }<br>
+        }<br>
+        bool res = solve(n, 0);<br>
+        if(res == false)<br> {<br>
+            cout << "No solution"<< endl; //if there is no possible solution<br>
+            cout << endl;<br>
+        }<br>
+  return 0;<br>
+}	<br>
+	
+	**Output**
+	![image](https://user-images.githubusercontent.com/98141713/163945121-50acd267-ec56-4500-a47c-05be21d61db6.png)
