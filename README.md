@@ -709,136 +709,135 @@ void single_llist::display()  <br>
 	
 	
 	
-#include<iostream>
-#include<cstdlib>
-using namespace std;
-struct node
-{
-int info;
-struct node *next;
-}*start;
+#include<iostream><br>
+#include<cstdlib><br>
+using namespace std;<br>
+struct node<br>
+{<br>
+int info;<br>
+struct node *next;<br>
+}*start;<br>
 
-class single_llist
-{
-public:
-node* create_node(int);
-void insert_begin();
-void delete_begin();
-void display();
-single_llist()
-{
-start=NULL;
-}
-};
-int main()
-{
-int choice;
-single_llist sl,s2;
-start = NULL;
+class single_llist<br>
+public:<br>
+node* create_node(int);<br>
+void insert_begin();<br><br>
+void delete_begin();v<br>
+void display();<br>
+single_llist()<br>
+{<br>
+start=NULL;<br>
+}<br>
+};<br>
+int main()<br>
+{<br>
+int choice;<br>
+single_llist sl,s2;<br>
+start = NULL;<br>
 
-do
-{
-cout<<"___________"<<endl;
-cout<<"Operations on singly linked list"<<endl;
-cout<<"___________"<<endl;
-cout<<"1.Insert at first"<<endl;
-cout<<"2.Delete at first"<<endl;
-cout<<"3.Display"<<endl;
-cout<<"4.Exit "<<endl;
+do<br>
+{<br>
+cout<<"___________"<<endl;<br>
+cout<<"Operations on singly link<br>ed list"<<endl;<br>
+cout<<"___________"<<endl;<br>
+cout<<"1.Insert at first"<<endl;<br>
+cout<<"2.Delete at first"<<endl;<br>
+cout<<"3.Display"<<endl;<br>
+cout<<"4.Exit "<<endl;<br><br>
 
-cout<<"Enter your choice :";
-cin>>choice;
-switch(choice)
-{
-case 1: sl.insert_begin();
-sl.display();
-break;
+cout<<"Enter your choice :";<br>
+cin>>choice;<br>
+switch(choice)<br>
+{<br>
+case 1: sl.insert_begin();<br>
+sl.display();<br>
+break;<br>
 
-case 2: s2.delete_begin();
-sl.display();
-break;
-case 3:sl.display();
-break;
-case 4:exit(0);
-break;
-default:cout<<"Wrong choice...???"<<endl;
-break;
-}
-}
+case 2: s2.delete_begin();<br>
+sl.display();<br>
+break;<br>
+case 3:sl.display();<br>
+break;<br>
+case 4:exit(0);<br>
+break;<br>
+default:cout<<"Wrong choice...???"<<endl;<br>
+break;<br>
+}<br>
+}<br>
 
 
-while(choice != 4);
-}
-node *single_llist::create_node(int value)
-{
-struct node *temp, *s;
-temp = new(struct node);
-if (temp == NULL)
-{
-cout<<"Memory not allocated"<<endl;
-return 0;
-}
-else
-{
-temp->info = value;
-temp->next = NULL;
-return temp;
-}
-}
-void single_llist::insert_begin()
-{
-int value;
-cout<<"Enter the value to be inserted : ";
-cin>>value;
-struct node *temp, *s;
-temp = create_node(value);
-if (start == NULL)
-{
-start = temp;
-start->next = NULL;
-cout<<temp->info<<" is inserted at first in the empty list"<<endl;
-}
-else
-{
-s = start;
-start = temp;
-start->next = s;
-cout<<temp->info<<" is inserted at first"<<endl;
-}
-}
-void single_llist::delete_begin()
-{
-if (start == NULL)
-{
-}
-else
-{
-struct node *s, *ptr;
-s = start;
-start = s->next;
-cout<<s->info<<" deleted from first"<<endl;
-free(s);
-}
-}
-
-void single_llist::display()
-{
-struct node *temp;
-if (start == NULL)
-cout<<"Linked list is empty...!!!"<<endl;
-else
-{
-cout<<"Linked list contains : ";
-temp = start;
-while (temp != NULL)
-{
-cout<<temp->info<<" ";
-temp = temp->next;
-}
-cout<<endl;
-}
-}
-
+while(choice != 4);<br>
+}<br>
+node *single_llist::create_node(int value)<br>
+{<br>
+struct node *temp, *s;<br>
+temp = new(struct node);<br>
+if (temp == NULL)<br>
+{<br>
+cout<<"Memory not allocated"<<endl;<br>
+return 0;<br>
+}<br>
+else<<br>br>
+{<br>
+temp->info = value;<br><br>
+temp->next = NULL;<br>
+return temp;<br>
+}<br>
+}<br>
+void single_llist::insert_begin()<br>
+{<br>
+int value;<br>
+cout<<"Enter the value to be inserted : ";<br>
+cin>>value;<br>
+struct node *temp, *s;<br><br>
+temp = create_node(value);<br>
+if (start == NULL)<br>
+{<br>
+start = temp;<br>
+start->next = NULL;<br>vvv
+cout<<temp->info<<" is inserted at first in the empty list"<<endl;<br>
+}<br>
+else<br>
+{<br>
+s = start;<br>
+start = temp;<br>
+start->next = s;<br>
+cout<<temp->info<<" is inserted at first"<<endl;<br>
+}<br>
+}<br>
+void single_llist::delete_begin()<br>
+{<br>
+if (start == NULL)<br>
+{<br>
+}<br>
+else<br>
+{<br>
+struct node *s, *ptr;<br>
+s = start;<br><br>
+start = s->next;<br>
+cout<<s->info<<" deleted from first"<<endl;<br>
+free(s);<br>
+}<br>
+}<br>
+<br>
+void single_llist::display()<br>
+{<br>
+struct node *temp;<br>
+if (start == NULL)<br>
+cout<<"Linked list is empty...!!!"<<endl;<br>
+else<br>
+{<br>
+cout<<"Linked list contains : ";<br>
+temp = start;<br>
+while (temp != NULL)<br>
+{<br>
+cout<<temp->info<<" ";<br>
+temp = temp->next;<br>
+}<br>
+cout<<endl;<br>
+}<br>
+}<br>
+<br>
 	
 #include<iostream><br>
 using namespace std;<br>
