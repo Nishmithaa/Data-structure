@@ -1624,3 +1624,71 @@ getch();<br>
 }<br>
 **output**
 ![image](https://user-images.githubusercontent.com/98141713/165243229-8faf575e-6181-4f5b-a156-729d68d82e37.png)
+
+	
+	
+**devide conquer max min**
+	#include <iostream><br>
+using namespace std;<br>
+void MinMax(int arr[], int low, int high, int &min, int &max)<br>
+{<br>
+if (low == high)<br>
+{<br>
+if (max < arr[low])<br> {   <br>        // comparison 1
+max = arr[low];<br>
+}<br>
+<br>
+if (min > arr[high])<br> { <br>         // comparison 2
+min = arr[high];<br>
+}<br>
+return;<br>
+}<br>
+if (high - low == 1)<br>
+{<br>
+if (arr[low] < arr[high])<br>
+{<br>
+if (min > arr[low])<br>
+{<br>
+min = arr[low];<br>
+}<br>
+if (max < arr[high])<br>
+{<br><br>
+max = arr[high];<br>
+}<br>
+}<br>
+else<br>
+{<br>
+if (min > arr[high])<br>
+{<br>
+min = arr[high];<br>
+}<br>
+if (max < arr[low])<br>
+{<br>
+max = arr[low];<br>
+}<br>
+}<br>
+return;<br>
+}<br>
+int mid = (low + high) / 2;<br>
+MinMax(arr, low, mid, min, max);<br>
+MinMax(arr, mid + 1, high, min, max);<br>
+}<br>
+int main()<br>
+{<br>
+int i, n, arr[50];<br><br>
+cout<<"Enter the number of elements : ";<br>
+cin>>n;<br>
+for( i = 0; i < n; i++ )<br>
+{<br>
+cout<<"Enter the element : ";<br>
+cin>>arr[i];<br>
+}<br>
+int max = arr[0], min = arr[0];<br>
+MinMax(arr, 0, n - 1, min, max);<br>
+cout<<"The minimum array element is "<<min<<endl;<br>
+cout<<"The maximum array element is "<<max;<br>
+}<br>
+
+	**Output**<br>
+![image](https://user-images.githubusercontent.com/98141713/165249232-f128325d-9ec4-4368-bacf-f21f777bb373.png)<br>
+	
