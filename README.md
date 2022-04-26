@@ -1472,3 +1472,107 @@ int main()<br>{<br>
 ![image](https://user-images.githubusercontent.com/98141713/163948897-c8c023a4-bd75-4de8-ba95-c445188fd3a6.png)<br>
 	
 	
+#include<bits/stdc++.h><br>
+using namespace std;<br>
+typedef pair<int, int> iPair;<br>
+struct Graph<br>
+{<br>
+	int V, E;<br>
+	vector< pair<int, iPair> > edges;<br>
+	Graph(int V, int E)<br><br>
+	{<br>
+		this->V = V;<br><br>
+		this->E = E;<br><br>
+	}<br><br>
+	void addEdge(int u, int v, int w)<br><br>
+	{<br><br>
+		edges.push_back({w, {u, v}});<br><br>
+	}<br><br>
+	int kruskalMST();<br><br>
+};<br><br>
+struct DisjointSets<br><br>
+{<br><br>
+	int *parent, *rnk;<br><br>
+	int n;<br><br>
+	<br><br>
+	DisjointSets(int n)<br><br>
+	{<br><br>
+		this->n = n;<br><br><br>
+		parent = new int[n+1];<br><br><br>
+		rnk = new int[n+1];<br><br><br>
+		for (int i = 0; i <= n; i++)<br><br><br>
+		{<br><br><br>
+			rnk[i] = 0;<br><br><br>
+			parent[i] = i;<br><br><br>
+		}<br><br><br>
+	}<br><br><br>
+	int find(int u)<br><br><br>
+	{<br><br><br>
+		if (u != parent[u])<br><br><br>
+			parent[u] = find(parent[u]);<br><br><br>
+		return parent[u];<br><br><br>
+	}<br><br><br>
+	void merge(int x, int y)<br><br><br><br>
+	{<br><br><br><br>
+		x = find(x), y = find(y);<br><br><br><br>
+		if (rnk[x] > rnk[y])<br><br><br><br>
+			parent[y] = x;<br><br><br><br>
+		else<br><br><br><br>
+			parent[x] = y;
+
+		if (rnk[x] == rnk[y])<br><br><br><br>
+			rnk[y]++;<br><br><br><br>
+	}<br><br><br><br>
+};<br><br><br><br>
+
+int Graph::kruskalMST()<br><br><br><br>
+{<br><br><br><br>
+	int mst_wt = 0;<br><br><br><br>
+	sort(edges.begin(), edges.end());<br><br><br><br>
+	DisjointSets ds(V);<br><br><br><br>
+	vector< pair<int, iPair> >::iterator it;<br><br><br><br>
+	for (it=edges.begin(); it!=edges.end(); it++)<br>
+	{<br><br><br><br>
+		int u = it->second.first;<br>
+		int v = it->second.second;<br>
+
+		int set_u = ds.find(u);<br>
+		int set_v = ds.find(v);<br>>
+		if (set_u != set_v)<br>
+		{<br><br><br><br>
+	
+			cout << u << " - " << v << endl;<br>
+			mst_wt += it->first;<br><br><br><br>
+			ds.merge(set_u, set_v);<br><br><br><br>
+		}
+	}<br><br><br><br>
+
+	return mst_wt;<br><br><br><br>
+}<br><br><br><br>
+<br><br><br><br>
+int main()<br><br><br><br>
+{<br><br><br><br>
+	int V = 9, E = 14;<br>
+	Graph g(V, E);<br><br>
+	g.addEdge(0, 1, 4);<br>
+	g.addEdge(0, 7, 8);<br>
+	g.addEdge(1, 2, 8);<br>
+	g.addEdge(1, 7, 11);<br>
+	g.addEdge(2, 3, 7);<br>
+	g.addEdge(2, 8, 2);<br>
+	g.addEdge(2, 5, 4);<br>
+	g.addEdge(3, 4, 9);<br>
+	g.addEdge(3, 5, 14);<br>
+	g.addEdge(4, 5, 10);<br>
+	g.addEdge(5, 6, 2);<br>
+	g.addEdge(6, 7, 1);<br>
+	g.addEdge(6, 8, 6);<br>
+	g.addEdge(7, 8, 7);<br>
+
+	cout << "Edges of MST are \n";<br><br><br><br><br>
+	int mst_wt = g.kruskalMST();<br><br><br><br><br>
+
+	cout << "\nWeight of MST is " << mst_wt;<br><br><br><br><br>
+
+	return 0;<br><br><br><br><br>
+}<br>
