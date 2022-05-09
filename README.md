@@ -1833,3 +1833,172 @@ void BST::display(node *ptr, int level)
 **Output**
 ![image](https://user-images.githubusercontent.com/98141713/165252491-1a759982-a409-456b-9792-7aae621f729d.png)
 	
+**Prims algorithm**
+	#include <bits/stdc++.h>
+using namespace std;
+#define V 5 
+int minKey(int key[], bool mstSet[]) 
+{ 
+int min = INT_MAX, min_index; 
+for (int v = 0; v < V; v++) 
+if (mstSet[v] == false && key[v] < min)
+min = key[v], min_index = v; 
+return min_index; 
+} 
+void printMST(int parent[], int graph[V][V])
+{ 
+cout<<"Edge \tWeight\n";
+for (int i = 1; i < V; i++)
+cout<<parent[i]<<" - "<<i<<" \t"<<graph[i][parent[i]]<<" \n";
+} 
+void primMST(int graph[V][V])
+{ 
+int parent[V];
+int key[V]; 
+bool mstSet[V];
+for (int i = 0; i < V; i++)
+key[i] = INT_MAX, mstSet[i] = false;
+key[0] = 0; 
+parent[0] = -1; // First node is always root of MST
+for (int count = 0; count < V - 1; count++) 
+{ 
+int u = minKey(key, mstSet); 
+mstSet[u] = true;
+for (int v = 0; v < V; v++) 
+if (graph[u][v] && mstSet[v] == false && graph[u][v] < key[v])
+
+
+parent[v] = u, key[v] = graph[u][v]; 
+} 
+printMST(parent, graph);
+} 
+int main()
+{ 
+int graph[V][V] = { { 0, 2, 0, 6, 0 }, 
+{ 2, 0, 3, 8, 5 }, 
+{ 0, 3, 0, 0, 7 }, 
+{ 6, 8, 0, 0, 9 }, 
+{ 0, 5, 7, 9, 0 } }; 
+primMST(graph);<br>
+return 0;<br>
+}<br>
+ **Output**<br>	
+![image](https://user-images.githubusercontent.com/98141713/167384908-eaa1a67b-9efc-4b07-bf8a-d0227dfd4dd7.png)<br>
+			
+	
+**Components**
+#include <iostream>
+#include <list>
+using namespace std;
+ 
+// Graph class represents a undirected graph
+// using adjacency list representation
+class Graph {
+    int V; // No. of vertices
+ 
+    // Pointer to an array containing adjacency lists
+    list<int>* adj;
+ 
+    // A function used by DFS
+    void DFSUtil(int v, bool visited[]);
+ 
+public:
+    Graph(int V); // Constructor
+    ~Graph();
+    void addEdge(int v, int w);
+    void connectedComponents();
+};
+ 
+// Method to print connected components in an
+// undirected graph
+void Graph::connectedComponents()
+{
+    // Mark all the vertices as not visited
+    bool* visited = new bool[V];
+    for (int v = 0; v < V; v++)
+        visited[v] = false;
+ 
+    for (int v = 0; v < V; v++) {
+        if (visited[v] == false) {
+            // print all reachable vertices
+            // from v
+            DFSUtil(v, visited);
+ 
+            cout << "\n";
+        }
+    }
+    delete[] visited;
+}
+ 
+void Graph::DFSUtil(int v, bool visited[])
+{
+    // Mark the current node as visited and print it
+    visited[v] = true;
+    cout << v << " ";
+ 
+    // Recur for all the vertices
+    // adjacent to this vertex
+    list<int>::iterator i;
+    for (i = adj[v].begin(); i != adj[v].end(); ++i)
+        if (!visited[*i])
+            DFSUtil(*i, visited);
+}
+ 
+Graph::Graph(int V)
+{
+    this->V = V;
+    adj = new list<int>[V];
+}
+ 
+Graph::~Graph() { delete[] adj; }
+ 
+// method to add an undirected edge
+void Graph::addEdge(int v, int w)
+{
+    adj[v].push_back(w);
+    adj[w].push_back(v);
+}
+ 
+// Driver code
+int main()
+{
+    // Create a graph given in the above diagram
+    Graph g(5); // 5 vertices numbered from 0 to 4
+    g.addEdge(1, 0);
+    g.addEdge(2, 3);
+    g.addEdge(3, 4);
+ 
+    cout << "Following are connected components \n";
+    g.connectedComponents();
+ 
+    return 0;
+}
+**OUTPUT**	
+![image](https://user-images.githubusercontent.com/98141713/167389510-3578a381-60d2-4c34-8cdc-ada044e1d745.png)<br>
+	
+**Tower of hanoi**
+#include <bits/stdc++.h>
+using namespace std;
+ 
+void towerOfHanoi(int n, char from_rod,
+                    char to_rod, char aux_rod)
+{
+    if (n == 0)
+    {
+        return;
+    }
+    towerOfHanoi(n - 1, from_rod, aux_rod, to_rod);
+    cout << "Move disk " << n << " from rod " << from_rod <<
+                                " to rod " << to_rod << endl;
+    towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
+}
+ 
+
+int main()
+{
+    int n = 4; 
+    towerOfHanoi(n, 'A', 'C', 'B');
+    return 0;
+}
+**Output**
+![image](https://user-images.githubusercontent.com/98141713/167391214-7ac8a5fa-4a64-4eed-8d15-30a6a2fc8433.png)
